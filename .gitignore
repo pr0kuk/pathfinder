@@ -4,3 +4,4 @@ front/Makefile
 front/build/
 front/cmake_install.cmake
 front/data
+.vscode
