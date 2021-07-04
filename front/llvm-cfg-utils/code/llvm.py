@@ -52,4 +52,4 @@ for fnumber in range(extraargs, len(sys.argv)): #analyze function with number fn
 
 graph.close()
 path_to = os.path.abspath(sys.argv[0])[:os.path.abspath(sys.argv[0]).find("code")]
-proc = subprocess.call([path_to + "build/core", path_to + "build/"])
+proc = subprocess.call([path_to + "../build/core", path_to + "../build/"])

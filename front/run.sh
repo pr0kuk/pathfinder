@@ -13,7 +13,7 @@ if [[ $1 == "-test" ]]; then
     fi
 else
     if [[ $1 == "-llvm" ]]; then
-        python $path/code/llvm.py $*
+        python $path/llvm-cfg-utils/code/llvm.py $*
     else
         $path/build/code2graph $*
     fi
