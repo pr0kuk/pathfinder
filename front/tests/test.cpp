@@ -127,7 +127,7 @@ TEST_CASE("test_graph2") {
 TEST_CASE("llvm") {
     mkdir("data", 0777);
     std::string path = std::filesystem::current_path().string(), s1, s2;
-    system(("python " + path + "/code/llvm.py " + "-llvm " + "-file " + path + "/input/llvm.in " + path + "/examples/.foo.dot " + path + "/examples/.main.dot").c_str());
+    system(("python " + path + "/llvm-cfg-utils/code/llvm.py " + "-llvm " + "-file " + path + "/llvm-cfg-utils/input/llvm.in " + path + "/llvm-cfg-utils/examples/.foo.dot " + path + "/llvm-cfg-utils/examples/.main.dot").c_str());
     std::ifstream test_graph(path + "/tests/test_graph_llvm");
     std::ifstream graph(path + "/data/graph");
     REQUIRE(test_graph.is_open());

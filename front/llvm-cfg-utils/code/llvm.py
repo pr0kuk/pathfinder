@@ -1,18 +1,16 @@
 import sys
 import subprocess
 import os
-
 graph = open("data/graph", "w")
-if sys.argv[1] == "-llvm":
-    if sys.argv[2] == "-file":
+if len(sys.argv) > 1 and sys.argv[1] == "-llvm":
+    if len(sys.argv) > 3 and sys.argv[2] == "-file":
         input_data = open(sys.argv[3]).readlines()
         extraargs, k, is_file = 4, 0, True
     else:
         extraargs, k, is_file = 2, 0, False
-else: 
+else:
     extraargs, k, is_file = 1, 0, False
 graph.write(str(len(sys.argv) - extraargs) + "\n") #print number of functions
-print(sys.argv)
 for fnumber in range(extraargs, len(sys.argv)): #analyze function with number fnumber
     if fnumber != extraargs:
         graph.write("\n")

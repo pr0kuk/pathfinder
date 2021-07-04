@@ -1,20 +1,21 @@
 #!/bin/bash
-if [[ $0 == "run.sh" ]]; then
-    path="./"
-else
-    path=${0%run.sh}
-fi
+absolute_path=`readlink -e "$0"`
+absolute_path=`dirname "$absolute_path"`
+absolute_path=${absolute_path%/llvm-cfg-utils}
+
+for arg in $*
+do
+    if [[ ${arg:0:1} != "-" ]]; then
+        aarg="$aarg `readlink -e "$arg"`"
+    else
+        aarg="$aarg $arg"
+    fi
+done
+
+cd $absolute_path
+
 if [[ $1 == "-test" ]]; then
-    if [[ $0 == "run.sh" ]]; then
-        build/test
-    else
-        cd $path
-        build/test
-    fi
+    build/test
 else
-    if [[ $1 == "-llvm" ]]; then
-        python $path/llvm-cfg-utils/code/llvm.py $*
-    else
-        $path/build/code2graph $*
-    fi
+    python llvm-cfg-utils/code/llvm.py $aarg
 fi
