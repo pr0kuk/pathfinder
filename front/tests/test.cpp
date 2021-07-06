@@ -63,16 +63,16 @@ TEST_CASE("check") {
 
 TEST_CASE("llvm") {
     mkdir("data", 0777);
-    std::string path = std::filesystem::current_path().string(), s1, s2;
-    system(("python " + path + "/llvm-cfg-utils/code/llvm.py " + "-llvm " + "-file " + path + "/llvm-cfg-utils/input/llvm.in " + path + "/llvm-cfg-utils/examples/.foo.dot " + path + "/llvm-cfg-utils/examples/.main.dot").c_str());
-    std::ifstream test_graph(path + "/tests/test_graph_llvm");
-    std::ifstream graph(path + "/data/graph");
+    std::string s1, s2;
+    system("python llvm-cfg-utils/code/llvm.py -front-only -llvm -file llvm-cfg-utils/input/llvm.in llvm-cfg-utils/examples/.foo.dot llvm-cfg-utils/examples/.main.dot");
+    std::ifstream test_graph("tests/test_graph_llvm");
+    std::ifstream graph("data/graph");
     REQUIRE(test_graph.is_open());
     REQUIRE(graph.is_open());
     for (int i = 0; !test_graph.eof() && !graph.eof(); i++) {
         test_graph >> s1;
         graph >> s2;
-        if (i != 14 && i != 15 && i != 16 && i != 17 && i != 18 && i != 47 && i != 48)
+        if (i < 14 || i > 18 && i!= 47 && i != 48)
             REQUIRE(s1 == s2);
     }
 }
