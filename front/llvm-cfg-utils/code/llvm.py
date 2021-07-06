@@ -2,9 +2,10 @@ import sys
 import subprocess
 import os
 graph = open("data/graph", "w")
-if len(sys.argv) > 1 and sys.argv[1] == "-llvm":
-    if len(sys.argv) > 3 and sys.argv[2] == "-file":
-        input_data = open(sys.argv[3]).readlines()
+if "-llvm" in sys.argv:
+    if "-file" in sys.argv:
+        a = sys.argv.index("-file") + 1
+        input_data = open(sys.argv[a]).readlines()
         extraargs, k, is_file = 4, 0, True
     else:
         extraargs, k, is_file = 2, 0, False
