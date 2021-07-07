@@ -1,12 +1,7 @@
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
 #include "fast.h"
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <sys/stat.h>
-#include <filesystem>
+#include "catch2/catch_test_macros.hpp"
 
 TEST_CASE("new_fastset") {
     std::vector<unsigned int> check1(4, 0), check2(3, 0);
