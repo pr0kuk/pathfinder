@@ -10,3 +10,6 @@ _deps/
 front/DartConfiguration.tcl
 testgraph_generator.output
 data/
+front/preprocessor/gr.in
+front/preprocessor/grammr.iggy
+front/preprocessor/grammar.iggy
